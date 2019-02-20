@@ -16,11 +16,7 @@ def redial_number(num):
 # Creates the WebDriver object and opens the Horizon login URL
 def init_webdriver():
     horizon_url = "https://www.unlimitedhorizon.co.uk/webapp/"
-    #web_driver_options = Options()
-    #web_driver_options.add_argument("-headless")
-    #web_driver_options.add_argument("HideCommandPromptWindow=True")
     init_webdriver.web_driver = PhantomJS()
-    #Firefox(executable_path="PhantomJS", options=web_driver_options)
     init_webdriver.web_driver.get(horizon_url)
 
 def setup_window():

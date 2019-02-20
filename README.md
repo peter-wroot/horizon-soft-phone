@@ -8,10 +8,10 @@ Python softphone for the Horizon phone system
   * Requests 
   * Selenium 
 
-* [Firefox WebDriver](https://github.com/mozilla/geckodriver/releases)
+* [PhantomJS](http://phantomjs.org/download.html)
 * [This Favicon](https://www.unlimitedhorizon.co.uk/images/branded_common/favicon.ico)
 
-Place the geckodriver.exe and favicon.ico files in the script directory.
+Place the PhantomJS.exe and favicon.ico files in the script directory.
 
 
 
