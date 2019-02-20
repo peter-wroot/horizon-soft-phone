@@ -1,7 +1,7 @@
 # Import required libraries
 import requests, time, os
 from tkinter import Frame,Entry,Listbox,Tk,Button,Label,X,Y,GROOVE,SINGLE,END
-from selenium.webdriver import Firefox
+from selenium.webdriver import PhantomJS
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
 
@@ -16,9 +16,11 @@ def redial_number(num):
 # Creates the WebDriver object and opens the Horizon login URL
 def init_webdriver():
     horizon_url = "https://www.unlimitedhorizon.co.uk/webapp/"
-    web_driver_options = Options()
-    web_driver_options.add_argument("-headless")
-    init_webdriver.web_driver = Firefox(executable_path="geckodriver", options=web_driver_options)
+    #web_driver_options = Options()
+    #web_driver_options.add_argument("-headless")
+    #web_driver_options.add_argument("HideCommandPromptWindow=True")
+    init_webdriver.web_driver = PhantomJS()
+    #Firefox(executable_path="PhantomJS", options=web_driver_options)
     init_webdriver.web_driver.get(horizon_url)
 
 def setup_window():
@@ -94,10 +96,12 @@ def on_close():
 def call_number(n):
     setup_window.phone_number_input.delete(first=0,last=999)
     phone_number_field = init_webdriver.web_driver.find_element_by_name("clickToDialNumber")
+    phone_number_field.clear()
     phone_number_field.send_keys(n)
     dial_button = init_webdriver.web_driver.find_element_by_name("ctdCall")
     dial_button.send_keys(Keys.ENTER)
-    setup_window.past_call_list.insert(END,n)
+    formatted_n_for_history = n.replace(" ","")
+    setup_window.past_call_list.insert(END,formatted_n_for_history)
 
 # Runs the init_webdriver function, and then passes the username
 # and password to the Webdriver, and clicks the 'login' button. The
