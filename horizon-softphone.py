@@ -1,5 +1,5 @@
 # Import required libraries
-import requests, bs4, re, os, time, argparse
+import requests, time, os
 from tkinter import Frame,Entry,Listbox,Tk,Button,Label,X,Y,GROOVE,SINGLE,END
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
@@ -22,12 +22,15 @@ def init_webdriver():
     init_webdriver.web_driver.get(horizon_url)
 
 def setup_window():
-    # Creates the window and sets the title and icon, sets the 
+    # Creates the window and sets the title and icon (if it exists), sets the 
     # resizability to False, and sets the function to run when
     # The window is closed. 
     setup_window.window_root = Tk()
     setup_window.window_root.wm_title("Horizon")
-    setup_window.window_root.iconbitmap('icon.ico')
+
+    if(os.path.exists('favicon.ico')):
+        setup_window.window_root.iconbitmap('favicon.ico')
+
     setup_window.window_root.resizable(width=False, height=False)
     setup_window.window_root.protocol("WM_DELETE_WINDOW",on_close)
 
@@ -112,7 +115,7 @@ def horizon_login(u,p):
     setup_window.user_name_field.config(state="disabled")
     setup_window.password_field.config(state="disabled")
     setup_window.login_button.config(state="disabled")
-    time.sleep(5)
+    time.sleep(10)
     setup_window.call_button.config(state="normal")
     setup_window.phone_number_input.config(state="normal")
 
