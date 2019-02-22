@@ -13,5 +13,9 @@ Python softphone for the Horizon phone system
 
 Place the PhantomJS.exe and favicon.ico files in the script directory.
 
+## Screenshot
 
+![alt text][logo]
+
+[logo]: http://ximg.us/upload/1550841792.png
 
